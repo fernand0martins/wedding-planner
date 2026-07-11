@@ -1,10 +1,17 @@
-Wedding Planner — Agenda and rotated-seat layout fixes
+# Wedding Planner
 
-Changes:
-- Agenda viewport dynamically fills the page to the bottom of the browser window.
-- The internal agenda timeline remains vertically scrollable.
-- Timeline always extends to at least 04:00 on the following day.
-- Calendar columns are ordered Bride & Groom, Events, Music.
-- Guest bubbles stay anchored to the correct table edges at every 45-degree floor rotation.
-- Floor table edit/rotate controls no longer overlap after rotation.
-- Existing seating, floor, JSON import/export, autosave, and agenda behavior is preserved.
+Interactive, client-side wedding planning application for Joana Coutinho and Fernando Martins.
+
+## Features
+
+- Drag-and-drop seating plan with household rules and table locking
+- Floor planner with room dimensions, blocked spaces, draggable tables, and 45° rotation
+- Guest markers aligned to rotated table edges
+- Overnight agenda extending into the following day
+- Separate Bride & Groom, Events, and Music planning columns
+- Spotify links for music moments
+- JSON import/export, CSV export, browser autosave, undo, and redo
+
+## Run
+
+Open `index.html` in a modern browser. No server or installation is required.
