@@ -29,6 +29,8 @@
 (() => {
   const STORAGE_KEY = ${JSON.stringify(EDIT_UNLOCK_STORAGE_KEY)};
   const UNLOCK_WORD = "unlock";
+  const LOCK_WORD = "lock";
+  const MAX_COMMAND_LENGTH = Math.max(UNLOCK_WORD.length, LOCK_WORD.length);
   let typed = "";
 
   const exactVisibleLabels = new Set([
@@ -85,9 +87,12 @@
     }
   }
 
-  function showUnlockedNotice() {
+  function showEditingNotice(message) {
+    document.getElementById("editingLockNotice")?.remove();
+
     const notice = document.createElement("div");
-    notice.textContent = "Editing unlocked";
+    notice.id = "editingLockNotice";
+    notice.textContent = message;
     Object.assign(notice.style, {
       position: "fixed",
       right: "20px",
@@ -113,7 +118,19 @@
       console.warn("Could not persist the editing unlock state.", storageError);
     }
     document.documentElement.setAttribute("data-edit-unlocked", "true");
-    showUnlockedNotice();
+    typed = "";
+    showEditingNotice("Editing unlocked");
+  }
+
+  function lockEditing() {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (storageError) {
+      console.warn("Could not persist the editing lock state.", storageError);
+    }
+    document.documentElement.removeAttribute("data-edit-unlocked");
+    typed = "";
+    showEditingNotice("Editing locked");
   }
 
   classifyButtons();
@@ -130,13 +147,19 @@
   document.addEventListener(
     "keydown",
     (event) => {
-      if (document.documentElement.dataset.editUnlocked === "true") return;
       if (event.ctrlKey || event.metaKey || event.altKey) return;
 
       const key = String(event.key || "").toLowerCase();
       if (/^[a-z]$/.test(key)) {
-        typed = (typed + key).slice(-UNLOCK_WORD.length);
-        if (typed === UNLOCK_WORD) unlockEditing();
+        typed = (typed + key).slice(-MAX_COMMAND_LENGTH);
+        const editingUnlocked =
+          document.documentElement.dataset.editUnlocked === "true";
+
+        if (!editingUnlocked && typed.endsWith(UNLOCK_WORD)) {
+          unlockEditing();
+        } else if (editingUnlocked && typed.endsWith(LOCK_WORD)) {
+          lockEditing();
+        }
       } else if (key === "escape") {
         typed = "";
       }
