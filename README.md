@@ -12,6 +12,18 @@ Interactive, client-side wedding planning application for Joana Coutinho and Fer
 - Spotify links for music moments
 - JSON import/export, CSV export, browser autosave, undo, and redo
 
+## Base configuration
+
+The application loads `base-config.json` before it starts. The file may contain either a raw wedding plan or an exported configuration with the plan under the `plan` property.
+
+If the JSON file cannot be loaded, the application falls back to the base plan embedded in the compressed application.
+
 ## Run
 
-Open `index.html` in a modern browser. No server or installation is required.
+Serve the repository through a local or hosted HTTP server and open `index.html`. For example:
+
+```bash
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000`.

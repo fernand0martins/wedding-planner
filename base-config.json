@@ -1,0 +1,1521 @@
+{
+  "schema": "wedding-seating-planner-export",
+  "version": 6,
+  "exportedAt": "2026-07-11T17:03:08.384Z",
+  "plan": {
+    "schema": "wedding-seating-planner",
+    "version": 8,
+    "title": "Joana Coutinho & Fernando Martins",
+    "tables": [
+      {
+        "id": 1,
+        "name": "Noivos",
+        "notes": "Joana Coutinho and Fernando Martins sit alone; all 10 physical seat positions remain visible.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Familia dos noivos",
+        "notes": "The seven named family guests remain together; all 10 seat positions remain available.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "BOYS",
+        "notes": "All 10 physical seat positions remain available, including head and foot.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 4,
+        "name": "MIRANDELA",
+        "notes": "All 10 physical seat positions remain available, including head and foot.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 5,
+        "name": "NINOS",
+        "notes": "All 10 physical seat positions remain available, including head and foot.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Te",
+        "notes": "All 10 physical seat positions remain available, including head and foot.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 7,
+        "name": "ARTES + Bia",
+        "notes": "Fixed joined layout: Table 7A and Table 7B stay together, with 20 visible seat positions.",
+        "fixedJoined": true,
+        "locked": false,
+        "orientation": "horizontal",
+        "seats": [
+          "A Head",
+          "A Left 1",
+          "A Left 2",
+          "A Left 3",
+          "A Left 4",
+          "A Right 1",
+          "A Right 2",
+          "A Right 3",
+          "A Right 4",
+          "A Foot",
+          "B Head",
+          "B Left 1",
+          "B Left 2",
+          "B Left 3",
+          "B Left 4",
+          "B Right 1",
+          "B Right 2",
+          "B Right 3",
+          "B Right 4",
+          "B Foot"
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Bela",
+        "notes": "All 10 physical seat positions remain available, including head and foot.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 9,
+        "name": "FEUP",
+        "notes": "All 10 physical seat positions remain available, including head and foot.",
+        "fixedJoined": false,
+        "locked": false,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Tio Paulo + Ines + Nuno",
+        "notes": "All 10 physical seat positions remain available, including head and foot.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 11,
+        "name": "Tiago + Tio Abel + Tia Julia + Paula",
+        "notes": "All 10 physical seat positions remain available, including head and foot.",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Tito + Tio Albino + Fatima",
+        "notes": "",
+        "fixedJoined": false,
+        "locked": false,
+        "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      }
+    ],
+    "guests": [
+      {
+        "id": 1,
+        "name": "Fernando Martins",
+        "household": "Fernando & Joana",
+        "group": "Bride & Groom",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 2,
+        "name": "Joana Coutinho",
+        "household": "Fernando & Joana",
+        "group": "Bride & Groom",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 3,
+        "name": "Maria Fernandes",
+        "household": "Joana",
+        "group": "Named family exception",
+        "confirmed": true,
+        "notes": "Named family exception"
+      },
+      {
+        "id": 4,
+        "name": "Pedro Coutinho",
+        "household": "Joana",
+        "group": "Named family exception",
+        "confirmed": true,
+        "notes": "Named family exception"
+      },
+      {
+        "id": 5,
+        "name": "Sónia Martins",
+        "household": "Joana",
+        "group": "Named family exception",
+        "confirmed": true,
+        "notes": "Named family exception"
+      },
+      {
+        "id": 6,
+        "name": "Ana Isabel Martins",
+        "household": "Martins",
+        "group": "Named family exception",
+        "confirmed": true,
+        "notes": "Named family exception"
+      },
+      {
+        "id": 7,
+        "name": "Isabel Martins",
+        "household": "Martins",
+        "group": "Named family exception",
+        "confirmed": true,
+        "notes": "Named family exception"
+      },
+      {
+        "id": 8,
+        "name": "José Fernando Martins",
+        "household": "Martins",
+        "group": "Named family exception",
+        "confirmed": true,
+        "notes": "Named family exception"
+      },
+      {
+        "id": 9,
+        "name": "Pedro Alves",
+        "household": "Martins",
+        "group": "Named family exception",
+        "confirmed": true,
+        "notes": "Named family exception"
+      },
+      {
+        "id": 10,
+        "name": "Cláudia Almeida",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 11,
+        "name": "Daniel Ferreira",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 12,
+        "name": "Joana Sebastião",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 13,
+        "name": "Joel Almeida",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 14,
+        "name": "André Bordalo",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 15,
+        "name": "Helena Bordalo",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 16,
+        "name": "André Silva",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 17,
+        "name": "Elsa Brito",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 18,
+        "name": "Pedro Brito da Silva",
+        "household": "BOYS",
+        "group": "BOYS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 19,
+        "name": "Dulcínio Martins",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 20,
+        "name": "Inês Martins",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 21,
+        "name": "Miguel Martins",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 22,
+        "name": "Paula Martins",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 23,
+        "name": "Maria José Carvalho Pires",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 24,
+        "name": "Alberto Santos",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 25,
+        "name": "Dores Santos",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 26,
+        "name": "Patrícia Santos",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 27,
+        "name": "Rajesh Tamang",
+        "household": "MIRANDELA",
+        "group": "MIRANDELA",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 28,
+        "name": "David Monteiro",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 29,
+        "name": "Nina Brenner",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 30,
+        "name": "Joana Soares",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 31,
+        "name": "Luísa Pinheiro Torres",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 32,
+        "name": "Nuno Paixão",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 33,
+        "name": "Nuno Marques",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 34,
+        "name": "Diana Rede",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 35,
+        "name": "Sid Gomes",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 36,
+        "name": "Diana Leite",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 37,
+        "name": "Emanuel Sousa",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 38,
+        "name": "Alice Pereira",
+        "household": "Te",
+        "group": "Te",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 39,
+        "name": "Ana Gonçalo",
+        "household": "Te",
+        "group": "Te",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 40,
+        "name": "Andreia Silva",
+        "household": "Te",
+        "group": "Te",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 41,
+        "name": "Fernando Pereira",
+        "household": "Te",
+        "group": "Te",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 42,
+        "name": "Gabriel Pereira",
+        "household": "Te",
+        "group": "Te",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 43,
+        "name": "Mafalda Gonçalo",
+        "household": "Te",
+        "group": "Te",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 44,
+        "name": "Marcos Pereira",
+        "household": "Te",
+        "group": "Te",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 45,
+        "name": "Té Pereira",
+        "household": "Te",
+        "group": "Te",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 46,
+        "name": "Carolina Esteves",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 47,
+        "name": "Cátia Lopes",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 48,
+        "name": "Jasper",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 49,
+        "name": "Ana Fontainhas",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 50,
+        "name": "Jorge Correia",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 51,
+        "name": "Leonor Figueiredo",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 52,
+        "name": "Mickael de Oliveira",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 53,
+        "name": "Manuel",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 54,
+        "name": "Olga Noronha",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 55,
+        "name": "José Pedro Silva",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 56,
+        "name": "Pilar Gordillo",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 57,
+        "name": "Pedro Carvalho",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 58,
+        "name": "Ian Carvalho",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 59,
+        "name": "Bia Carvalho",
+        "household": "Bia",
+        "group": "Bia",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 60,
+        "name": "Mateus Pereira",
+        "household": "Bia",
+        "group": "Bia",
+        "confirmed": true,
+        "notes": "ARTES–Bia joined table"
+      },
+      {
+        "id": 61,
+        "name": "João Cairrão",
+        "household": "Cairrão",
+        "group": "Cairrão",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 62,
+        "name": "Júlia Cairrão",
+        "household": "Cairrão",
+        "group": "Cairrão",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 63,
+        "name": "Amélia Pinto",
+        "household": "Fernandes Pinto",
+        "group": "Fernandes Pinto",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 64,
+        "name": "Anabela Maganete",
+        "household": "Fernandes Pinto",
+        "group": "Fernandes Pinto",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 65,
+        "name": "Eva Martins",
+        "household": "Fernandes Pinto",
+        "group": "Fernandes Pinto",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 66,
+        "name": "Francisco Pinto",
+        "household": "Fernandes Pinto",
+        "group": "Fernandes Pinto",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 67,
+        "name": "Josefina Fernandes",
+        "household": "Fernandes Pinto",
+        "group": "Fernandes Pinto",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 68,
+        "name": "Manuel Pinto",
+        "household": "Fernandes Pinto",
+        "group": "Fernandes Pinto",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 69,
+        "name": "Paulo Pinto",
+        "household": "Fernandes Pinto",
+        "group": "Fernandes Pinto",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 70,
+        "name": "João Fernandes",
+        "household": "FEUP",
+        "group": "FEUP",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 71,
+        "name": "Barbara Moura",
+        "household": "FEUP",
+        "group": "FEUP",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 72,
+        "name": "Gabriel Reis",
+        "household": "FEUP",
+        "group": "FEUP",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 73,
+        "name": "Luís Reis",
+        "household": "FEUP",
+        "group": "FEUP",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 74,
+        "name": "Jaime Azevedo",
+        "household": "FEUP",
+        "group": "FEUP",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 75,
+        "name": "Jaime +1",
+        "household": "FEUP",
+        "group": "FEUP",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 76,
+        "name": "Abel Fernandes",
+        "household": "Tio Abel",
+        "group": "Tio Abel",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 77,
+        "name": "Leonor Fernandes",
+        "household": "Tio Abel",
+        "group": "Tio Abel",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 78,
+        "name": "Mariana Fernandes",
+        "household": "Tio Abel",
+        "group": "Tio Abel",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 79,
+        "name": "Mecia Martins",
+        "household": "Nuno",
+        "group": "Nuno",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 80,
+        "name": "Nuno Fernandes",
+        "household": "Nuno",
+        "group": "Nuno",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 81,
+        "name": "Rita Fernandes",
+        "household": "Nuno",
+        "group": "Nuno",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 82,
+        "name": "Vicente Fernandes",
+        "household": "Nuno",
+        "group": "Nuno",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 83,
+        "name": "Albino Fernandes",
+        "household": "Tio Albino",
+        "group": "Tio Albino",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 84,
+        "name": "Deolinda Fernandes",
+        "household": "Tio Albino",
+        "group": "Tio Albino",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 85,
+        "name": "Ana Martins",
+        "household": "Titó",
+        "group": "Titó",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 86,
+        "name": "Manuel Fernandes",
+        "household": "Titó",
+        "group": "Titó",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 87,
+        "name": "Patrícia Fernandes",
+        "household": "Titó",
+        "group": "Titó",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 88,
+        "name": "David",
+        "household": "Inês",
+        "group": "Inês",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 89,
+        "name": "Diogo",
+        "household": "Inês",
+        "group": "Inês",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 90,
+        "name": "Inês Fernandes",
+        "household": "Inês",
+        "group": "Inês",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 91,
+        "name": "Ana Paula Cairrão",
+        "household": "Paula",
+        "group": "Paula",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 92,
+        "name": "Leonor",
+        "household": "Tiago",
+        "group": "Tiago",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 93,
+        "name": "Márcia Santos",
+        "household": "Tiago",
+        "group": "Tiago",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 94,
+        "name": "Tiago Fernandes",
+        "household": "Tiago",
+        "group": "Tiago",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 95,
+        "name": "Clotilde Bruçó",
+        "household": "Tio Paulo",
+        "group": "Tio Paulo",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 96,
+        "name": "Paulo Fernandes",
+        "household": "Tio Paulo",
+        "group": "Tio Paulo",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 97,
+        "name": "Tiago Reis",
+        "household": "FEUP",
+        "group": "Mimir",
+        "confirmed": false,
+        "notes": ""
+      },
+      {
+        "id": 98,
+        "name": "Tiago Reis +1",
+        "household": "FEUP",
+        "group": "FEUP",
+        "confirmed": false,
+        "notes": ""
+      },
+      {
+        "id": 99,
+        "name": "Fatima",
+        "household": "Brunhosinho",
+        "group": "Brunhosinho",
+        "confirmed": false,
+        "notes": ""
+      },
+      {
+        "id": 100,
+        "name": "Saul",
+        "household": "Brunhosinho",
+        "group": "Brunhosinho",
+        "confirmed": false,
+        "notes": ""
+      }
+    ],
+    "rules": {
+      "couple": [
+        "Joana Coutinho",
+        "Fernando Martins"
+      ],
+      "namedFamily": [
+        "Pedro Coutinho",
+        "Sónia Martins",
+        "Maria Fernandes",
+        "Isabel Martins",
+        "José Fernando Martins",
+        "Ana Isabel Martins",
+        "Pedro Alves"
+      ],
+      "linkedHouseholds": [
+        "ARTES",
+        "Bia"
+      ]
+    },
+    "state": {
+      "seats": {
+        "1": {
+          "Head": null,
+          "Left 1": null,
+          "Left 2": null,
+          "Left 3": null,
+          "Left 4": null,
+          "Right 1": null,
+          "Right 2": 1,
+          "Right 3": 2,
+          "Right 4": null,
+          "Foot": null
+        },
+        "2": {
+          "Head": null,
+          "Left 1": 9,
+          "Left 2": 6,
+          "Left 3": 7,
+          "Left 4": 8,
+          "Right 1": 5,
+          "Right 2": 4,
+          "Right 3": 3,
+          "Right 4": null,
+          "Foot": null
+        },
+        "3": {
+          "Head": 18,
+          "Left 1": 17,
+          "Left 2": 16,
+          "Left 3": 10,
+          "Left 4": 11,
+          "Right 1": 13,
+          "Right 2": 12,
+          "Right 3": 15,
+          "Right 4": 14,
+          "Foot": null
+        },
+        "4": {
+          "Head": 21,
+          "Left 1": 24,
+          "Left 2": 25,
+          "Left 3": 26,
+          "Left 4": 27,
+          "Right 1": 20,
+          "Right 2": 19,
+          "Right 3": 22,
+          "Right 4": 23,
+          "Foot": null
+        },
+        "5": {
+          "Head": 28,
+          "Left 1": 32,
+          "Left 2": 31,
+          "Left 3": 33,
+          "Left 4": 30,
+          "Right 1": 29,
+          "Right 2": 35,
+          "Right 3": 34,
+          "Right 4": 37,
+          "Foot": 36
+        },
+        "6": {
+          "Head": null,
+          "Left 1": 40,
+          "Left 2": 38,
+          "Left 3": 41,
+          "Left 4": 45,
+          "Right 1": 42,
+          "Right 2": 43,
+          "Right 3": 39,
+          "Right 4": 44,
+          "Foot": null
+        },
+        "7": {
+          "A Head": null,
+          "A Left 1": 47,
+          "A Left 2": 48,
+          "A Left 3": 59,
+          "A Left 4": 60,
+          "A Right 1": null,
+          "A Right 2": 56,
+          "A Right 3": 58,
+          "A Right 4": 57,
+          "A Foot": null,
+          "B Head": null,
+          "B Left 1": 46,
+          "B Left 2": 49,
+          "B Left 3": 50,
+          "B Left 4": 55,
+          "B Right 1": 53,
+          "B Right 2": 54,
+          "B Right 3": 51,
+          "B Right 4": 52,
+          "B Foot": null
+        },
+        "8": {
+          "Head": null,
+          "Left 1": 69,
+          "Left 2": 63,
+          "Left 3": 68,
+          "Left 4": null,
+          "Right 1": 64,
+          "Right 2": 67,
+          "Right 3": 66,
+          "Right 4": 65,
+          "Foot": null
+        },
+        "9": {
+          "Head": null,
+          "Left 1": 73,
+          "Left 2": 72,
+          "Left 3": 71,
+          "Left 4": 70,
+          "Right 1": 74,
+          "Right 2": 75,
+          "Right 3": null,
+          "Right 4": null,
+          "Foot": null
+        },
+        "10": {
+          "Head": 96,
+          "Left 1": 95,
+          "Left 2": 89,
+          "Left 3": 90,
+          "Left 4": 88,
+          "Right 1": 80,
+          "Right 2": 79,
+          "Right 3": 81,
+          "Right 4": 82,
+          "Foot": null
+        },
+        "11": {
+          "Head": 76,
+          "Left 1": 62,
+          "Left 2": 61,
+          "Left 3": 91,
+          "Left 4": 78,
+          "Right 1": 94,
+          "Right 2": 92,
+          "Right 3": 93,
+          "Right 4": 77,
+          "Foot": null
+        },
+        "12": {
+          "Head": null,
+          "Left 1": 83,
+          "Left 2": 84,
+          "Left 3": null,
+          "Left 4": null,
+          "Right 1": 85,
+          "Right 2": 86,
+          "Right 3": 87,
+          "Right 4": null,
+          "Foot": null
+        }
+      },
+      "unassigned": [],
+      "unconfirmed": [
+        97,
+        98,
+        99,
+        100
+      ],
+      "merges": []
+    },
+    "floor": {
+      "room": {
+        "width": 18,
+        "height": 16,
+        "unit": "m"
+      },
+      "tableDimensions": {
+        "width": 2.2,
+        "height": 1
+      },
+      "items": {
+        "table-1": {
+          "x": 7.990173195478313,
+          "y": 14.269820864979947,
+          "rotation": 0
+        },
+        "table-2": {
+          "x": 5.481178660762283,
+          "y": 10.737453352447005,
+          "rotation": 90
+        },
+        "table-3": {
+          "x": 1.6778975660130444,
+          "y": 11.120586195793804,
+          "rotation": 0
+        },
+        "table-4": {
+          "x": 11.55234466808751,
+          "y": 7.339625570186115,
+          "rotation": 0
+        },
+        "table-5": {
+          "x": 4.5492603657892365,
+          "y": 7.330196042931506,
+          "rotation": 0
+        },
+        "table-6": {
+          "x": 11.912208343138737,
+          "y": 3.345241147684341,
+          "rotation": 90
+        },
+        "table-7-A": {
+          "x": 2.0311801570299686,
+          "y": 4.048912394855094,
+          "rotation": 0
+        },
+        "table-7-B": {
+          "x": 4.2494521997753445,
+          "y": 4.048913891130444,
+          "rotation": 0
+        },
+        "table-8": {
+          "x": 12.036693812010425,
+          "y": 10.445107647192113,
+          "rotation": 90
+        },
+        "table-9": {
+          "x": 1.865536503819266,
+          "y": 6.673576174770197,
+          "rotation": 90
+        },
+        "table-10": {
+          "x": 14.581492798006442,
+          "y": 3.964053756871527,
+          "rotation": 0
+        },
+        "table-11": {
+          "x": 15.372575745018695,
+          "y": 6.871580162156972,
+          "rotation": 90
+        },
+        "table-12": {
+          "x": 14.892047545069454,
+          "y": 11.111066022308156,
+          "rotation": 0
+        }
+      },
+      "blocked": [
+        {
+          "id": "block-1783777140705",
+          "name": "Oliveira",
+          "width": 2,
+          "height": 2,
+          "x": 8.022072649947427,
+          "y": 6.934906793807801
+        }
+      ],
+      "showGuests": true,
+      "moveGuests": false
+    },
+    "agenda": {
+      "date": "2026-09-05",
+      "dayStart": "09:00",
+      "dayEnd": "04:00",
+      "dayEndOffset": 1,
+      "events": [
+        {
+          "id": "event-1783784929980-u199cz",
+          "title": "Chegada dos convidados",
+          "location": "",
+          "notes": "",
+          "color": "#009e20",
+          "subEvents": [],
+          "start": "13:50",
+          "startDayOffset": 0,
+          "end": "14:20",
+          "endDayOffset": 0
+        },
+        {
+          "id": "event-1783785472720-9oeo7w",
+          "title": "Vestir",
+          "location": "",
+          "notes": "",
+          "color": "#8eecc8",
+          "subEvents": [],
+          "start": "09:00",
+          "startDayOffset": 0,
+          "end": "13:00",
+          "endDayOffset": 0
+        },
+        {
+          "id": "event-1783786044593-izvbet",
+          "title": "Hora da Cerimónia",
+          "location": "",
+          "notes": "",
+          "color": "#c9a96e",
+          "subEvents": [],
+          "start": "14:35",
+          "startDayOffset": 0,
+          "end": "15:20",
+          "endDayOffset": 0
+        },
+        {
+          "id": "event-1783786068297-zhw1g5",
+          "title": "Cocktail",
+          "location": "",
+          "notes": "",
+          "color": "#ff8f8f",
+          "subEvents": [],
+          "start": "15:25",
+          "startDayOffset": 0,
+          "end": "18:00",
+          "endDayOffset": 0
+        },
+        {
+          "id": "event-1783786095400-jjd3j3",
+          "title": "Banda",
+          "location": "",
+          "notes": "",
+          "color": "#6e8cc9",
+          "subEvents": [
+            {
+              "id": "moment-1783787062580-x8vuwl",
+              "title": "Setlist",
+              "notes": "",
+              "spotifyUrl": "https://open.spotify.com/playlist/0EfvqOAqedNOOPX2p1Nl97?si=l9oR4aQbTb2erELt7F1L_g&utm_source=copy-link",
+              "spotifyEmbedCode": "",
+              "embedPlayer": true,
+              "time": "16:00",
+              "start": "16:00",
+              "startDayOffset": 0,
+              "end": "17:00",
+              "endDayOffset": 0
+            }
+          ],
+          "start": "16:00",
+          "startDayOffset": 0,
+          "end": "17:30",
+          "endDayOffset": 0
+        },
+        {
+          "id": "event-1783786346156-p6aptr",
+          "title": "Jantar",
+          "location": "",
+          "notes": "",
+          "color": "#ce41d8",
+          "subEvents": [],
+          "start": "19:00",
+          "startDayOffset": 0,
+          "end": "21:00",
+          "endDayOffset": 0
+        },
+        {
+          "id": "event-1783786479766-yyd4dh",
+          "title": "Recepcao",
+          "location": "",
+          "notes": "",
+          "color": "#90c3f9",
+          "subEvents": [
+            {
+              "id": "moment-1783786501578-vh2v5l",
+              "title": "Musica da recepcao",
+              "notes": "",
+              "spotifyUrl": "",
+              "spotifyEmbedCode": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/track/644es5aYPJghtZLjM1rmSP?utm_source=generator&si=89c8a19d9ae544aa\" width=\"100%\" height=\"152\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>",
+              "embedPlayer": true,
+              "time": "12:55",
+              "start": "12:55",
+              "startDayOffset": 0,
+              "end": "13:00",
+              "endDayOffset": 0
+            }
+          ],
+          "start": "12:55",
+          "startDayOffset": 0,
+          "end": "13:55",
+          "endDayOffset": 0
+        },
+        {
+          "id": "event-1783786528087-7qzwks",
+          "title": "Corte do bolo",
+          "location": "",
+          "notes": "",
+          "color": "#b51ae0",
+          "subEvents": [],
+          "start": "21:00",
+          "startDayOffset": 0,
+          "end": "22:00",
+          "endDayOffset": 0
+        },
+        {
+          "id": "event-1783786746949-1axx84",
+          "title": "Pista",
+          "location": "",
+          "notes": "",
+          "color": "#d75656",
+          "subEvents": [],
+          "start": "23:00",
+          "startDayOffset": 0,
+          "end": "03:05",
+          "endDayOffset": 1
+        },
+        {
+          "id": "event-1783786779290-i5plwz",
+          "title": "Abertura de Buffets + Cafés e Digestivos",
+          "location": "",
+          "notes": "",
+          "color": "#ed649f",
+          "subEvents": [],
+          "start": "22:00",
+          "startDayOffset": 0,
+          "end": "23:00",
+          "endDayOffset": 0
+        }
+      ],
+      "coupleEvents": [
+        {
+          "id": "couple-1783787981213-4z1vxi",
+          "title": "Cabeleireira",
+          "location": "",
+          "notes": "",
+          "color": "#f36dc9",
+          "subEvents": [],
+          "start": "11:55",
+          "startDayOffset": 0,
+          "end": "12:55",
+          "endDayOffset": 0
+        },
+        {
+          "id": "couple-1783789013432-buoxap",
+          "title": "Fotos",
+          "location": "",
+          "color": "#35de8f",
+          "notes": "",
+          "start": "18:00",
+          "startDayOffset": 0,
+          "end": "18:30",
+          "endDayOffset": 0,
+          "subEvents": []
+        }
+      ]
+    }
+  }
+}
