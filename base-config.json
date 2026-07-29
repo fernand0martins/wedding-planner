@@ -1,7 +1,7 @@
 {
   "schema": "wedding-seating-planner-export",
   "version": 6,
-  "exportedAt": "2026-07-16T09:14:18.581Z",
+  "exportedAt": "2026-07-29T07:13:04.522Z",
   "plan": {
     "schema": "wedding-seating-planner",
     "version": 8,
@@ -132,7 +132,7 @@
         "name": "ARTES + Bia",
         "notes": "Fixed joined layout: Table 7A and Table 7B stay together, with 20 visible seat positions.",
         "fixedJoined": true,
-        "locked": false,
+        "locked": true,
         "orientation": "horizontal",
         "seats": [
           "A Head",
@@ -242,8 +242,28 @@
         "name": "Tito + Tio Albino + Fatima",
         "notes": "",
         "fixedJoined": false,
-        "locked": false,
+        "locked": true,
         "orientation": "horizontal",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 13,
+        "name": "Table 13 - Staff",
+        "notes": "",
+        "fixedJoined": false,
+        "locked": true,
+        "orientation": "vertical",
         "seats": [
           "Head",
           "Left 1",
@@ -1064,23 +1084,71 @@
         "name": "Mafalda",
         "household": "ARTES",
         "group": "ARTES",
-        "confirmed": true,
-        "notes": ""
-      },
-      {
-        "id": 102,
-        "name": "Dinis",
-        "household": "ARTES",
-        "group": "ARTES",
-        "confirmed": true,
-        "notes": ""
-      },
-      {
-        "id": 103,
-        "name": "Sofia Pereira",
-        "household": "ARTES",
-        "group": "ARTES",
         "confirmed": false,
+        "notes": ""
+      },
+      {
+        "id": 104,
+        "name": "Leonor Meireles",
+        "household": "Fernandes Pinto",
+        "group": "Fernandes Pinto",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 105,
+        "name": "Leonardo Santos",
+        "household": "ARTES",
+        "group": "ARTES",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 106,
+        "name": "Francisco Ferreira",
+        "household": "NINOS",
+        "group": "NINOS",
+        "confirmed": false,
+        "notes": ""
+      },
+      {
+        "id": 107,
+        "name": "WP António",
+        "household": "Staff",
+        "group": "Staff",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 108,
+        "name": "WP +1",
+        "household": "Staff",
+        "group": "Staff",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 109,
+        "name": "DJ Sérgio",
+        "household": "Staff",
+        "group": "Staff",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 110,
+        "name": "Fotógrafo Bruno",
+        "household": "Staff",
+        "group": "Staff",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 111,
+        "name": "Fotógrafo +1",
+        "household": "Staff",
+        "group": "Staff",
+        "confirmed": true,
         "notes": ""
       }
     ],
@@ -1178,37 +1246,37 @@
           "Foot": null
         },
         "7": {
-          "A Head": 56,
-          "A Left 1": 59,
-          "A Left 2": 60,
+          "A Head": null,
+          "A Left 1": 58,
+          "A Left 2": 56,
           "A Left 3": 47,
           "A Left 4": 48,
-          "A Right 1": 58,
-          "A Right 2": 57,
-          "A Right 3": 53,
-          "A Right 4": 54,
+          "A Right 1": 57,
+          "A Right 2": 53,
+          "A Right 3": 54,
+          "A Right 4": 55,
           "A Foot": null,
           "B Head": null,
-          "B Left 1": null,
+          "B Left 1": 105,
           "B Left 2": 46,
           "B Left 3": 50,
           "B Left 4": 49,
-          "B Right 1": 55,
-          "B Right 2": 51,
-          "B Right 3": 52,
-          "B Right 4": 102,
-          "B Foot": 101
+          "B Right 1": 51,
+          "B Right 2": 52,
+          "B Right 3": 59,
+          "B Right 4": 60,
+          "B Foot": null
         },
         "8": {
           "Head": null,
           "Left 1": 69,
-          "Left 2": 66,
-          "Left 3": 65,
-          "Left 4": null,
-          "Right 1": 64,
-          "Right 2": 67,
-          "Right 3": 63,
-          "Right 4": 68,
+          "Left 2": 64,
+          "Left 3": 67,
+          "Left 4": 63,
+          "Right 1": 66,
+          "Right 2": 65,
+          "Right 3": 68,
+          "Right 4": 104,
           "Foot": null
         },
         "9": {
@@ -1258,13 +1326,26 @@
           "Right 3": 91,
           "Right 4": null,
           "Foot": null
+        },
+        "13": {
+          "Head": null,
+          "Left 1": 107,
+          "Left 2": 108,
+          "Left 3": null,
+          "Left 4": null,
+          "Right 1": 109,
+          "Right 2": 110,
+          "Right 3": 111,
+          "Right 4": null,
+          "Foot": null
         }
       },
       "unassigned": [],
       "unconfirmed": [
         97,
         98,
-        103
+        101,
+        106
       ],
       "merges": []
     },
@@ -1342,6 +1423,11 @@
         "table-12": {
           "x": 14.892047545069454,
           "y": 11.111066022308156,
+          "rotation": 0
+        },
+        "table-13": {
+          "x": 3.25,
+          "y": 3.6999999999999997,
           "rotation": 0
         }
       },
