@@ -1,7 +1,7 @@
 {
   "schema": "wedding-seating-planner-export",
   "version": 6,
-  "exportedAt": "2026-07-29T08:38:21.508Z",
+  "exportedAt": "2026-07-29T13:28:06.531Z",
   "plan": {
     "schema": "wedding-seating-planner",
     "version": 8,
@@ -92,7 +92,7 @@
         "name": "NINOS",
         "notes": "All 10 physical seat positions remain available, including head and foot.",
         "fixedJoined": false,
-        "locked": true,
+        "locked": false,
         "orientation": "horizontal",
         "seats": [
           "Head",
@@ -132,7 +132,7 @@
         "name": "ARTES + Bia",
         "notes": "Fixed joined layout: Table 7A and Table 7B stay together, with 20 visible seat positions.",
         "fixedJoined": true,
-        "locked": true,
+        "locked": false,
         "orientation": "horizontal",
         "seats": [
           "A Head",
@@ -264,6 +264,26 @@
         "fixedJoined": false,
         "locked": true,
         "orientation": "vertical",
+        "seats": [
+          "Head",
+          "Left 1",
+          "Left 2",
+          "Left 3",
+          "Left 4",
+          "Right 1",
+          "Right 2",
+          "Right 3",
+          "Right 4",
+          "Foot"
+        ]
+      },
+      {
+        "id": 14,
+        "name": "Table 14",
+        "notes": "",
+        "fixedJoined": false,
+        "locked": false,
+        "orientation": "horizontal",
         "seats": [
           "Head",
           "Left 1",
@@ -1230,16 +1250,16 @@
           "Foot": null
         },
         "5": {
-          "Head": 28,
-          "Left 1": 32,
-          "Left 2": 31,
-          "Left 3": 33,
-          "Left 4": 30,
-          "Right 1": 29,
-          "Right 2": 35,
-          "Right 3": 34,
-          "Right 4": 37,
-          "Foot": 36
+          "Head": null,
+          "Left 1": 28,
+          "Left 2": 29,
+          "Left 3": 35,
+          "Left 4": 34,
+          "Right 1": 32,
+          "Right 2": 31,
+          "Right 3": 33,
+          "Right 4": 30,
+          "Foot": null
         },
         "6": {
           "Head": null,
@@ -1254,26 +1274,26 @@
           "Foot": null
         },
         "7": {
-          "A Head": 60,
-          "A Left 1": 59,
-          "A Left 2": 47,
-          "A Left 3": 48,
-          "A Left 4": 105,
-          "A Right 1": 56,
-          "A Right 2": 58,
-          "A Right 3": 57,
-          "A Right 4": 53,
+          "A Head": null,
+          "A Left 1": null,
+          "A Left 2": 60,
+          "A Left 3": 59,
+          "A Left 4": 47,
+          "A Right 1": null,
+          "A Right 2": 57,
+          "A Right 3": 58,
+          "A Right 4": 56,
           "A Foot": null,
           "B Head": null,
-          "B Left 1": 46,
-          "B Left 2": 50,
-          "B Left 3": 49,
-          "B Left 4": 101,
-          "B Right 1": 54,
-          "B Right 2": 55,
-          "B Right 3": 51,
-          "B Right 4": 52,
-          "B Foot": 112
+          "B Left 1": 50,
+          "B Left 2": 49,
+          "B Left 3": 101,
+          "B Left 4": 112,
+          "B Right 1": null,
+          "B Right 2": 46,
+          "B Right 3": 105,
+          "B Right 4": 48,
+          "B Foot": null
         },
         "8": {
           "Head": null,
@@ -1346,6 +1366,18 @@
           "Right 3": 111,
           "Right 4": null,
           "Foot": null
+        },
+        "14": {
+          "Head": 55,
+          "Left 1": 51,
+          "Left 2": 52,
+          "Left 3": 37,
+          "Left 4": 36,
+          "Right 1": null,
+          "Right 2": null,
+          "Right 3": 53,
+          "Right 4": 54,
+          "Foot": null
         }
       },
       "unassigned": [],
@@ -1354,7 +1386,15 @@
         98,
         106
       ],
-      "merges": []
+      "merges": [
+        {
+          "id": "merge-1785327663052",
+          "tableIds": [
+            5,
+            14
+          ]
+        }
+      ]
     },
     "floor": {
       "room": {
@@ -1373,13 +1413,13 @@
           "rotation": 0
         },
         "table-2": {
-          "x": 5.492160585853755,
+          "x": 5.294494147967688,
           "y": 10.298171974439372,
           "rotation": 270
         },
         "table-3": {
-          "x": 1.2935267023159618,
-          "y": 10.560501175334366,
+          "x": 1.6921532295059323,
+          "y": 10.974461558032116,
           "rotation": 0
         },
         "table-4": {
@@ -1388,8 +1428,8 @@
           "rotation": 0
         },
         "table-5": {
-          "x": 4.630714160148132,
-          "y": 7.272227970528169,
+          "x": 4.032774369363176,
+          "y": 7.824175147458502,
           "rotation": 180
         },
         "table-6": {
@@ -1398,13 +1438,13 @@
           "rotation": 90
         },
         "table-7-A": {
-          "x": 1.9433256276720754,
-          "y": 4.158732303667449,
-          "rotation": 0
+          "x": 3.9498880483567933,
+          "y": 2.959425676014127,
+          "rotation": 180
         },
         "table-7-B": {
-          "x": 4.227487478218514,
-          "y": 4.1367715609385405,
+          "x": 1.6297001591162723,
+          "y": 2.9715497429745046,
           "rotation": 0
         },
         "table-8": {
@@ -1413,8 +1453,8 @@
           "rotation": 90
         },
         "table-9": {
-          "x": 1.8106286211096765,
-          "y": 6.684558165651433,
+          "x": 3.4357983088841717,
+          "y": 4.798738644472796,
           "rotation": 90
         },
         "table-10": {
@@ -1433,8 +1473,13 @@
           "rotation": 0
         },
         "table-13": {
-          "x": 3.25,
-          "y": 3.6999999999999997,
+          "x": 8.043411118737131,
+          "y": 4.169458419293737,
+          "rotation": 0
+        },
+        "table-14": {
+          "x": 1.7457717799249388,
+          "y": 7.824271960951653,
           "rotation": 0
         }
       },
