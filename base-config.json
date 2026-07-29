@@ -1,7 +1,7 @@
 {
   "schema": "wedding-seating-planner-export",
   "version": 6,
-  "exportedAt": "2026-07-29T07:13:04.522Z",
+  "exportedAt": "2026-07-29T08:38:21.508Z",
   "plan": {
     "schema": "wedding-seating-planner",
     "version": 8,
@@ -1084,7 +1084,7 @@
         "name": "Mafalda",
         "household": "ARTES",
         "group": "ARTES",
-        "confirmed": false,
+        "confirmed": true,
         "notes": ""
       },
       {
@@ -1148,6 +1148,14 @@
         "name": "Fotógrafo +1",
         "household": "Staff",
         "group": "Staff",
+        "confirmed": true,
+        "notes": ""
+      },
+      {
+        "id": 112,
+        "name": "Dinis Santos",
+        "household": "ARTES",
+        "group": "ARTES",
         "confirmed": true,
         "notes": ""
       }
@@ -1246,26 +1254,26 @@
           "Foot": null
         },
         "7": {
-          "A Head": null,
-          "A Left 1": 58,
-          "A Left 2": 56,
-          "A Left 3": 47,
-          "A Left 4": 48,
-          "A Right 1": 57,
-          "A Right 2": 53,
-          "A Right 3": 54,
-          "A Right 4": 55,
+          "A Head": 60,
+          "A Left 1": 59,
+          "A Left 2": 47,
+          "A Left 3": 48,
+          "A Left 4": 105,
+          "A Right 1": 56,
+          "A Right 2": 58,
+          "A Right 3": 57,
+          "A Right 4": 53,
           "A Foot": null,
           "B Head": null,
-          "B Left 1": 105,
-          "B Left 2": 46,
-          "B Left 3": 50,
-          "B Left 4": 49,
-          "B Right 1": 51,
-          "B Right 2": 52,
-          "B Right 3": 59,
-          "B Right 4": 60,
-          "B Foot": null
+          "B Left 1": 46,
+          "B Left 2": 50,
+          "B Left 3": 49,
+          "B Left 4": 101,
+          "B Right 1": 54,
+          "B Right 2": 55,
+          "B Right 3": 51,
+          "B Right 4": 52,
+          "B Foot": 112
         },
         "8": {
           "Head": null,
@@ -1344,7 +1352,6 @@
       "unconfirmed": [
         97,
         98,
-        101,
         106
       ],
       "merges": []
