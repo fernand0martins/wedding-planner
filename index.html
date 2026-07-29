@@ -1,15 +1,117 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wedding Planner</title></head><body><noscript>This application requires JavaScript.</noscript>
-  <script src="payload/part-01.js"></script>
-  <script src="payload/part-02.js"></script>
-  <script src="payload/part-03.js"></script>
-  <script src="payload/rest-1.js"></script>
-  <script src="payload/rest-2-1.js"></script>
-  <script src="payload/rest-2-2.js"></script>
-  <script src="payload/rest-2-3.js"></script>
-  <script src="payload/rest-3.js"></script>
-  <script src="payload/rest-4-1.js"></script>
-  <script src="payload/rest-4-2.js"></script>
-  <script src="payload/rest-4-3.js"></script>
-  <script src="loader.js"></script>
-</body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wedding Planner</title>
+</head>
+<body>
+  <noscript>This application requires JavaScript.</noscript>
+  <script>
+    (async () => {
+      const EDIT_UNLOCK_STORAGE_KEY = "wedding-planner-edit-unlocked";
+      const APP_STORAGE_PATTERN = /wedding|planner|seating|agenda|floor|guest|table/i;
+      const APP_SCHEMA_PATTERN = /"schema"\s*:\s*"wedding-seating-planner(?:-export)?"/i;
+      const navigationEntry = performance.getEntriesByType("navigation")[0];
+      const isReload =
+        navigationEntry?.type === "reload" ||
+        performance.navigation?.type === 1;
+
+      function clearAppStorage(storage) {
+        try {
+          const keysToRemove = [];
+
+          for (let index = 0; index < storage.length; index += 1) {
+            const key = storage.key(index);
+            if (!key || key === EDIT_UNLOCK_STORAGE_KEY) continue;
+
+            const value = storage.getItem(key) || "";
+            if (APP_STORAGE_PATTERN.test(key) || APP_SCHEMA_PATTERN.test(value)) {
+              keysToRemove.push(key);
+            }
+          }
+
+          for (const key of keysToRemove) storage.removeItem(key);
+        } catch (storageError) {
+          console.warn("Could not clear the wedding planner storage cache.", storageError);
+        }
+      }
+
+      async function clearAppCache() {
+        clearAppStorage(localStorage);
+        clearAppStorage(sessionStorage);
+
+        if ("caches" in window) {
+          try {
+            const cacheNames = await caches.keys();
+            await Promise.all(
+              cacheNames
+                .filter((cacheName) => APP_STORAGE_PATTERN.test(cacheName))
+                .map((cacheName) => caches.delete(cacheName)),
+            );
+          } catch (cacheError) {
+            console.warn("Could not clear the wedding planner Cache Storage entries.", cacheError);
+          }
+        }
+
+        if ("serviceWorker" in navigator) {
+          try {
+            const appBasePath = new URL("./", location.href).pathname;
+            if (appBasePath !== "/") {
+              const registrations = await navigator.serviceWorker.getRegistrations();
+              await Promise.all(
+                registrations
+                  .filter((registration) => {
+                    const scopePath = new URL(registration.scope).pathname;
+                    return scopePath.startsWith(appBasePath);
+                  })
+                  .map((registration) => registration.unregister()),
+              );
+            }
+          } catch (serviceWorkerError) {
+            console.warn("Could not clear the wedding planner service worker.", serviceWorkerError);
+          }
+        }
+      }
+
+      function loadScript(source, cacheBust) {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = cacheBust
+            ? `${source}${source.includes("?") ? "&" : "?"}reload=${cacheBust}`
+            : source;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`Could not load ${source}`));
+          document.body.appendChild(script);
+        });
+      }
+
+      try {
+        if (isReload) await clearAppCache();
+
+        const cacheBust = isReload ? Date.now() : null;
+        const scripts = [
+          "payload/part-01.js",
+          "payload/part-02.js",
+          "payload/part-03.js",
+          "payload/rest-1.js",
+          "payload/rest-2-1.js",
+          "payload/rest-2-2.js",
+          "payload/rest-2-3.js",
+          "payload/rest-3.js",
+          "payload/rest-4-1.js",
+          "payload/rest-4-2.js",
+          "payload/rest-4-3.js",
+          "loader.js",
+        ];
+
+        for (const source of scripts) {
+          await loadScript(source, cacheBust);
+        }
+      } catch (error) {
+        document.body.innerHTML = `<main style="font-family:system-ui;padding:2rem"><h1>Wedding Planner</h1><p>The application could not be loaded.</p><pre>${String(error)}</pre></main>`;
+      }
+    })();
+  </script>
+</body>
+</html>
