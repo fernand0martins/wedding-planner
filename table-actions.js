@@ -15,6 +15,10 @@
       '"Fixed two-table layout · 20 seats"',
       '"Joined two-table layout · 20 seats"',
     );
+    html = html.replace(
+      "The dimensions apply to every physical table, including\n                    Table 7A and 7B.",
+      "The dimensions apply to every physical table, including joined table sections.",
+    );
 
     const removeMarker =
       '          if (unit.type === "single" && ![1, 7].includes(tables[0].id))';
