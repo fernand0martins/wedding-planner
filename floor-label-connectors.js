@@ -3,43 +3,44 @@
 
   const styles = `
 <style id="floorLabelConnectorStyles">
-  .floor-full-name-connectors {
+  .floor-full-name-connector-line {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
+    display: none;
+    height: 1.5px;
+    background: rgba(38, 53, 74, 0.72);
+    transform-origin: 0 50%;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
+  }
+
+  .floor-full-name-connector-line::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(38, 53, 74, 0.82);
+    transform: translateY(-50%);
+  }
+
+  html.floor-full-names .floor-full-name-connector-line {
+    display: block;
   }
 
   .floor-full-name-label {
-    z-index: 2;
+    z-index: 3;
   }
 
-  .floor-full-name-connector {
-    stroke: rgba(38, 53, 74, 0.62);
-    stroke-width: 1.2;
-    vector-effect: non-scaling-stroke;
-  }
-
-  .floor-full-name-connector-dot {
-    fill: rgba(38, 53, 74, 0.82);
-  }
-
-  html:not(.floor-full-names) .floor-full-name-connectors {
-    display: none;
-  }
-
-  html[data-pdf-export="true"] .floor-full-name-connector {
-    stroke: rgba(38, 53, 74, 0.72);
+  html[data-pdf-export="true"] .floor-full-name-connector-line {
+    background: rgba(38, 53, 74, 0.8);
   }
 </style>`;
 
   const script = `
 <script id="floorLabelConnectorScript">
 (() => {
-  const SVG_NS = "http://www.w3.org/2000/svg";
   let rafId = 0;
 
   function normalize(value) {
@@ -55,76 +56,42 @@
     return tableId + "|" + index;
   }
 
-  function ensureSvg(overlay, stage) {
-    let svg = overlay.querySelector(":scope > .floor-full-name-connectors");
-    if (!svg) {
-      svg = document.createElementNS(SVG_NS, "svg");
-      svg.classList.add("floor-full-name-connectors");
-      svg.setAttribute("aria-hidden", "true");
-      overlay.prepend(svg);
+  function ensureLine(overlay, key) {
+    let line = Array.from(overlay.querySelectorAll(":scope > .floor-full-name-connector-line"))
+      .find((element) => element.dataset.connectorKey === key);
+    if (!line) {
+      line = document.createElement("div");
+      line.className = "floor-full-name-connector-line";
+      line.dataset.connectorKey = key;
+      overlay.prepend(line);
     }
-
-    const width = Math.max(stage.offsetWidth, 1);
-    const height = Math.max(stage.offsetHeight, 1);
-    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-    svg.setAttribute("width", String(width));
-    svg.setAttribute("height", String(height));
-    return svg;
+    return line;
   }
 
-  function clamp(value, min, max) {
-    return Math.max(min, Math.min(max, value));
-  }
-
-  function connectorEnd(labelRect, seatXClient, seatYClient) {
-    const centerX = (labelRect.left + labelRect.right) / 2;
-    const centerY = (labelRect.top + labelRect.bottom) / 2;
-    const dx = seatXClient - centerX;
-    const dy = seatYClient - centerY;
+  function closestPointOnRect(rect, x, y) {
+    const cx = (rect.left + rect.right) / 2;
+    const cy = (rect.top + rect.bottom) / 2;
+    const dx = x - cx;
+    const dy = y - cy;
 
     if (Math.abs(dx) > Math.abs(dy)) {
       return {
-        x: dx < 0 ? labelRect.left : labelRect.right,
-        y: clamp(seatYClient, labelRect.top + 3, labelRect.bottom - 3),
+        x: dx < 0 ? rect.left : rect.right,
+        y: Math.max(rect.top + 2, Math.min(rect.bottom - 2, y)),
       };
     }
 
     return {
-      x: clamp(seatXClient, labelRect.left + 3, labelRect.right - 3),
-      y: dy < 0 ? labelRect.top : labelRect.bottom,
+      x: Math.max(rect.left + 2, Math.min(rect.right - 2, x)),
+      y: dy < 0 ? rect.top : rect.bottom,
     };
-  }
-
-  function ensureConnector(svg, key) {
-    let group = Array.from(svg.children).find(
-      (child) => child.dataset?.connectorKey === key,
-    );
-    if (group) return group;
-
-    group = document.createElementNS(SVG_NS, "g");
-    group.dataset.connectorKey = key;
-
-    const line = document.createElementNS(SVG_NS, "line");
-    line.classList.add("floor-full-name-connector");
-
-    const dot = document.createElementNS(SVG_NS, "circle");
-    dot.classList.add("floor-full-name-connector-dot");
-    dot.setAttribute("r", "1.9");
-
-    group.append(line, dot);
-    svg.appendChild(group);
-    return group;
   }
 
   function refresh() {
     rafId = 0;
-
     const stage = document.querySelector(".floor-stage");
     const overlay = stage?.querySelector(":scope > .floor-full-name-overlay");
     if (!stage || !overlay) return;
-
-    const svg = ensureSvg(overlay, stage);
-    if (!document.documentElement.classList.contains("floor-full-names")) return;
 
     const stageRect = stage.getBoundingClientRect();
     if (!stageRect.width || !stageRect.height) return;
@@ -144,60 +111,57 @@
       const label = overlay.querySelector(
         `.floor-full-name-label[data-label-key="${CSS.escape(key)}"]`,
       );
-      if (!label || !label.textContent.trim()) continue;
+      if (!label || !label.textContent.trim() || /^empty(?:\\s|$)/i.test(label.textContent.trim())) continue;
 
       const markerRect = marker.getBoundingClientRect();
       const labelRect = label.getBoundingClientRect();
       if (!markerRect.width || !markerRect.height || !labelRect.width || !labelRect.height) continue;
 
-      const seatXClient = markerRect.left + markerRect.width / 2;
-      const seatYClient = markerRect.top + markerRect.height / 2;
-      const endClient = connectorEnd(labelRect, seatXClient, seatYClient);
+      const seatX = markerRect.left + markerRect.width / 2;
+      const seatY = markerRect.top + markerRect.height / 2;
+      const end = closestPointOnRect(labelRect, seatX, seatY);
 
-      const x1 = (seatXClient - stageRect.left) * scaleX;
-      const y1 = (seatYClient - stageRect.top) * scaleY;
-      const x2 = (endClient.x - stageRect.left) * scaleX;
-      const y2 = (endClient.y - stageRect.top) * scaleY;
+      const x1 = (seatX - stageRect.left) * scaleX;
+      const y1 = (seatY - stageRect.top) * scaleY;
+      const x2 = (end.x - stageRect.left) * scaleX;
+      const y2 = (end.y - stageRect.top) * scaleY;
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const length = Math.hypot(dx, dy);
+      if (length < 2) continue;
 
-      const group = ensureConnector(svg, key);
+      const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+      const line = ensureLine(overlay, key);
       used.add(key);
-
-      const line = group.querySelector("line");
-      const dot = group.querySelector("circle");
-      line.setAttribute("x1", x1.toFixed(2));
-      line.setAttribute("y1", y1.toFixed(2));
-      line.setAttribute("x2", x2.toFixed(2));
-      line.setAttribute("y2", y2.toFixed(2));
-      dot.setAttribute("cx", x1.toFixed(2));
-      dot.setAttribute("cy", y1.toFixed(2));
+      line.style.left = x1 + "px";
+      line.style.top = y1 + "px";
+      line.style.width = length + "px";
+      line.style.transform = `rotate(${angle}deg)`;
     }
 
-    for (const group of Array.from(svg.children)) {
-      const key = group.dataset?.connectorKey;
-      if (key && !used.has(key)) group.remove();
+    for (const line of overlay.querySelectorAll(":scope > .floor-full-name-connector-line")) {
+      if (!used.has(line.dataset.connectorKey)) line.remove();
     }
   }
 
   function schedule() {
     if (rafId) return;
-    rafId = requestAnimationFrame(refresh);
+    rafId = requestAnimationFrame(() => requestAnimationFrame(refresh));
   }
 
   const observer = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
       const target = mutation.target;
-      if (!(target instanceof Element)) {
-        schedule();
-        return;
+      if (target instanceof Element && target.closest(".floor-full-name-connector-line")) continue;
+      if (target instanceof Element && target.closest(".floor-full-name-overlay")) {
+        if (target.matches(".floor-full-name-label") || target.closest(".floor-full-name-label")) {
+          schedule();
+          return;
+        }
+        continue;
       }
-      if (target.closest(".floor-full-name-connectors")) continue;
-      if (
-        target.matches(".floor-full-name-label, .floor-seat-marker, .floor-table, .floor-stage") ||
-        target.closest(".floor-full-name-label, .floor-table")
-      ) {
-        schedule();
-        return;
-      }
+      schedule();
+      return;
     }
   });
 
