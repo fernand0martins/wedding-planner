@@ -58,6 +58,7 @@
     white-space: nowrap;
     text-align: center;
     will-change: left, top;
+    z-index: 3;
   }
 
   .floor-full-name-label[data-side="top"] { transform: translate(-50%, -100%); }
@@ -95,7 +96,9 @@
     text = text.replace(/,\\s*(?:head|foot|left\\s*\\d+|right\\s*\\d+)\\s*,\\s*table\\s*\\d+.*$/i, "");
     text = text.replace(/,\\s*table\\s*\\d+.*$/i, "");
     text = text.replace(/\\s*[·|]\\s*(?:head|foot|left\\s*\\d+|right\\s*\\d+)(?:\\s*[·|,]\\s*table\\s*\\d+)?$/i, "");
-    return normalize(text);
+    text = normalize(text);
+    if (/^empty(?:\\s|$)/i.test(text)) return "";
+    return text;
   }
 
   function getName(marker) {
@@ -202,14 +205,15 @@
       const tableCounters = new Map();
 
       for (const marker of stage.querySelectorAll(".floor-seat-marker")) {
-        const name = getName(marker);
-        if (!name) continue;
         const table = marker.closest(".floor-table");
         if (!table) continue;
 
         const count = tableCounters.get(table) || 0;
         tableCounters.set(table, count + 1);
         const key = markerKey(marker, table, count);
+
+        const name = getName(marker);
+        if (!name) continue;
         used.add(key);
 
         let label = existing.get(key);
