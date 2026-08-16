@@ -40,10 +40,10 @@
     position: absolute;
     display: none;
     width: max-content;
-    max-width: 145px;
+    max-width: 150px;
     padding: 2px 5px;
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.97);
     color: #172231;
     border: 1px solid rgba(38, 53, 74, 0.18);
     box-shadow: 0 1px 3px rgba(17, 24, 39, 0.12);
@@ -98,16 +98,38 @@
     return String(value || "").replace(/\\s+/g, " ").trim();
   }
 
-  function getName(marker) {
-    return normalize(
-      marker.dataset.floorFullName ||
-      marker.dataset.fullName ||
-      marker.dataset.guestName ||
-      marker.getAttribute("data-guest") ||
-      marker.getAttribute("aria-label") ||
-      marker.getAttribute("title") ||
+  function guestNameOnly(value) {
+    let text = normalize(value);
+    if (!text) return "";
+
+    text = text.replace(
+      /,\\s*(?:head|foot|left\\s*\\d+|right\\s*\\d+)\\s*,\\s*table\\s*\\d+.*$/i,
       "",
     );
+    text = text.replace(/,\\s*table\\s*\\d+.*$/i, "");
+    text = text.replace(
+      /\\s*[·|]\\s*(?:head|foot|left\\s*\\d+|right\\s*\\d+)(?:\\s*[·|,]\\s*table\\s*\\d+)?$/i,
+      "",
+    );
+
+    return normalize(text);
+  }
+
+  function getName(marker) {
+    const candidates = [
+      marker.dataset.floorFullName,
+      marker.dataset.fullName,
+      marker.dataset.guestName,
+      marker.getAttribute("data-guest"),
+      marker.getAttribute("aria-label"),
+      marker.getAttribute("title"),
+    ];
+
+    for (const candidate of candidates) {
+      const name = guestNameOnly(candidate);
+      if (name && name !== "+" && name !== "•" && name !== ".") return name;
+    }
+    return "";
   }
 
   function ensureOverlay(stage) {
@@ -133,6 +155,58 @@
     return dx < 0 ? "left" : "right";
   }
 
+  function overlap(a, b, padding = 3) {
+    return !(
+      a.right + padding <= b.left ||
+      b.right + padding <= a.left ||
+      a.bottom + padding <= b.top ||
+      b.bottom + padding <= a.top
+    );
+  }
+
+  function resolveCollisions(labels) {
+    const placed = [];
+
+    for (const label of labels) {
+      const side = label.dataset.side;
+      const horizontal = side === "top" || side === "bottom";
+      const direction = side === "top" || side === "left" ? -1 : 1;
+      let attempts = 0;
+
+      while (attempts < 18) {
+        const rect = label.getBoundingClientRect();
+        const collision = placed.find((item) => overlap(rect, item.rect));
+        if (!collision) break;
+
+        const step = 13 + Math.floor(attempts / 3) * 3;
+        const lane = Math.floor(attempts / 2) + 1;
+        const alternating = attempts % 2 === 0 ? 1 : -1;
+
+        if (horizontal) {
+          const currentLeft = parseFloat(label.style.left) || 0;
+          label.style.left = currentLeft + alternating * lane * step + "px";
+        } else {
+          const currentTop = parseFloat(label.style.top) || 0;
+          label.style.top = currentTop + alternating * lane * step + "px";
+        }
+
+        if (attempts >= 8) {
+          if (horizontal) {
+            const currentTop = parseFloat(label.style.top) || 0;
+            label.style.top = currentTop + direction * 15 + "px";
+          } else {
+            const currentLeft = parseFloat(label.style.left) || 0;
+            label.style.left = currentLeft + direction * 15 + "px";
+          }
+        }
+
+        attempts += 1;
+      }
+
+      placed.push({ label, rect: label.getBoundingClientRect() });
+    }
+  }
+
   function refresh() {
     scheduled = false;
 
@@ -147,11 +221,12 @@
     const stageRect = stage.getBoundingClientRect();
     const scaleX = stageRect.width / Math.max(stage.offsetWidth, 1);
     const scaleY = stageRect.height / Math.max(stage.offsetHeight, 1);
+    const labels = [];
 
     const markers = stage.querySelectorAll(".floor-seat-marker");
     for (const marker of markers) {
       const name = getName(marker);
-      if (!name || name === "+" || name === "•" || name === ".") continue;
+      if (!name) continue;
 
       const table = marker.closest(".floor-table");
       if (!table) continue;
@@ -163,8 +238,8 @@
       const side = sideFor(markerRect, tableRect);
       const centerX = (markerRect.left + markerRect.width / 2 - stageRect.left) / scaleX;
       const centerY = (markerRect.top + markerRect.height / 2 - stageRect.top) / scaleY;
-      const gapX = (markerRect.width / 2 + 7) / scaleX;
-      const gapY = (markerRect.height / 2 + 7) / scaleY;
+      const gapX = (markerRect.width / 2 + 8) / scaleX;
+      const gapY = (markerRect.height / 2 + 8) / scaleY;
 
       const label = document.createElement("div");
       label.className = "floor-full-name-label";
@@ -186,7 +261,10 @@
       }
 
       overlay.appendChild(label);
+      labels.push(label);
     }
+
+    requestAnimationFrame(() => resolveCollisions(labels));
   }
 
   function schedule() {
