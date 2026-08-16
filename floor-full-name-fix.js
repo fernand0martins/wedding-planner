@@ -44,8 +44,9 @@
   .floor-full-name-label {
     position: absolute;
     width: max-content;
-    max-width: 150px;
-    padding: 2px 5px;
+    min-width: 56px;
+    max-width: 122px;
+    padding: 3px 6px;
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.97);
     color: #172231;
@@ -54,17 +55,38 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 10px;
     font-weight: 700;
-    line-height: 1.2;
-    white-space: nowrap;
+    line-height: 1.15;
+    white-space: normal;
     text-align: center;
     will-change: left, top;
     z-index: 3;
+    user-select: none;
   }
 
-  .floor-full-name-label[data-side="top"] { transform: translate(-50%, -100%); }
-  .floor-full-name-label[data-side="bottom"] { transform: translate(-50%, 0); }
-  .floor-full-name-label[data-side="left"] { transform: translate(-100%, -50%); }
-  .floor-full-name-label[data-side="right"] { transform: translate(0, -50%); }
+  .floor-full-name-label .floor-name-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .floor-full-name-label:not([data-manual="true"])[data-side="top"] { transform: translate(-50%, -100%); }
+  .floor-full-name-label:not([data-manual="true"])[data-side="bottom"] { transform: translate(-50%, 0); }
+  .floor-full-name-label:not([data-manual="true"])[data-side="left"] { transform: translate(-100%, -50%); }
+  .floor-full-name-label:not([data-manual="true"])[data-side="right"] { transform: translate(0, -50%); }
+
+  .floor-full-name-label[data-manual="true"] {
+    transform: none !important;
+  }
+
+  html[data-edit-unlocked="true"].floor-full-names .floor-full-name-label {
+    pointer-events: auto;
+    cursor: grab;
+  }
+
+  html[data-edit-unlocked="true"].floor-full-names .floor-full-name-label.dragging {
+    cursor: grabbing;
+    box-shadow: 0 3px 9px rgba(17, 24, 39, 0.22);
+    z-index: 20;
+  }
 
   html.floor-full-names .floor-stage,
   html.floor-full-names .floor-stage-shell,
@@ -85,6 +107,7 @@
 (() => {
   let rafId = 0;
   let refreshing = false;
+  let dragState = null;
 
   function normalize(value) {
     return String(value || "").replace(/\\s+/g, " ").trim();
@@ -117,6 +140,40 @@
     return "";
   }
 
+  function splitName(name) {
+    const words = normalize(name).split(" ").filter(Boolean);
+    if (words.length <= 1) return [name];
+
+    let bestIndex = 1;
+    let bestDifference = Infinity;
+    for (let index = 1; index < words.length; index += 1) {
+      const first = words.slice(0, index).join(" ");
+      const second = words.slice(index).join(" ");
+      const difference = Math.abs(first.length - second.length);
+      if (difference < bestDifference) {
+        bestDifference = difference;
+        bestIndex = index;
+      }
+    }
+
+    return [
+      words.slice(0, bestIndex).join(" "),
+      words.slice(bestIndex).join(" "),
+    ];
+  }
+
+  function setLabelName(label, name) {
+    if (label.dataset.fullGuestName === name) return;
+    label.dataset.fullGuestName = name;
+    label.replaceChildren();
+    for (const lineText of splitName(name)) {
+      const line = document.createElement("span");
+      line.className = "floor-name-line";
+      line.textContent = lineText;
+      label.appendChild(line);
+    }
+  }
+
   function ensureOverlay(stage) {
     let overlay = stage.querySelector(":scope > .floor-full-name-overlay");
     if (!overlay) {
@@ -145,8 +202,11 @@
   }
 
   function resolveCollisions(labels) {
-    const placed = [];
-    for (const label of labels) {
+    const manual = labels.filter((label) => label.dataset.manual === "true");
+    const automatic = labels.filter((label) => label.dataset.manual !== "true");
+    const placed = manual.map((label) => ({ rect: label.getBoundingClientRect() }));
+
+    for (const label of automatic) {
       const baseLeft = Number(label.dataset.baseLeft || 0);
       const baseTop = Number(label.dataset.baseTop || 0);
       const side = label.dataset.side;
@@ -182,9 +242,40 @@
     return tableId + "|" + index;
   }
 
+  function labelPositions() {
+    try {
+      if (!plan.floor || typeof plan.floor !== "object") plan.floor = {};
+      if (!plan.floor.labelPositions || typeof plan.floor.labelPositions !== "object") {
+        plan.floor.labelPositions = {};
+      }
+      return plan.floor.labelPositions;
+    } catch (error) {
+      return {};
+    }
+  }
+
+  function savedPosition(key) {
+    const position = labelPositions()[key];
+    if (!position || !Number.isFinite(Number(position.x)) || !Number.isFinite(Number(position.y))) return null;
+    return { x: Number(position.x), y: Number(position.y) };
+  }
+
+  function persistPosition(key, x, y) {
+    try {
+      const positions = labelPositions();
+      positions[key] = {
+        x: Math.round(x * 10) / 10,
+        y: Math.round(y * 10) / 10,
+      };
+      if (typeof savePlan === "function") savePlan();
+    } catch (error) {
+      console.warn("Could not persist floor label position.", error);
+    }
+  }
+
   function refresh() {
     rafId = 0;
-    if (refreshing) return;
+    if (refreshing || dragState) return;
     refreshing = true;
 
     try {
@@ -223,7 +314,7 @@
           label.dataset.labelKey = key;
           overlay.appendChild(label);
         }
-        if (label.textContent !== name) label.textContent = name;
+        setLabelName(label, name);
 
         const markerRect = marker.getBoundingClientRect();
         const tableRect = table.getBoundingClientRect();
@@ -245,8 +336,17 @@
         label.dataset.side = side;
         label.dataset.baseLeft = String(left);
         label.dataset.baseTop = String(top);
-        label.style.left = left + "px";
-        label.style.top = top + "px";
+
+        const manual = savedPosition(key);
+        if (manual) {
+          label.dataset.manual = "true";
+          label.style.left = manual.x + "px";
+          label.style.top = manual.y + "px";
+        } else {
+          delete label.dataset.manual;
+          label.style.left = left + "px";
+          label.style.top = top + "px";
+        }
         labels.push(label);
       }
 
@@ -263,11 +363,75 @@
   }
 
   function schedule() {
-    if (rafId) return;
+    if (rafId || dragState) return;
     rafId = requestAnimationFrame(refresh);
   }
 
+  function startDrag(event, label) {
+    if (document.documentElement.dataset.editUnlocked !== "true") return;
+    if (event.button !== 0) return;
+
+    const stage = document.querySelector(".floor-stage");
+    if (!stage) return;
+
+    const stageRect = stage.getBoundingClientRect();
+    const labelRect = label.getBoundingClientRect();
+    const scaleX = stage.offsetWidth / Math.max(stageRect.width, 1);
+    const scaleY = stage.offsetHeight / Math.max(stageRect.height, 1);
+
+    dragState = {
+      label,
+      key: label.dataset.labelKey,
+      stage,
+      stageRect,
+      scaleX,
+      scaleY,
+      offsetX: event.clientX - labelRect.left,
+      offsetY: event.clientY - labelRect.top,
+    };
+
+    label.dataset.manual = "true";
+    label.classList.add("dragging");
+    label.setPointerCapture?.(event.pointerId);
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  function moveDrag(event) {
+    if (!dragState) return;
+
+    const { label, stageRect, scaleX, scaleY, offsetX, offsetY } = dragState;
+    const x = (event.clientX - stageRect.left - offsetX) * scaleX;
+    const y = (event.clientY - stageRect.top - offsetY) * scaleY;
+
+    label.style.left = x + "px";
+    label.style.top = y + "px";
+    event.preventDefault();
+  }
+
+  function endDrag(event) {
+    if (!dragState) return;
+    const { label, key } = dragState;
+    const x = parseFloat(label.style.left) || 0;
+    const y = parseFloat(label.style.top) || 0;
+
+    label.classList.remove("dragging");
+    persistPosition(key, x, y);
+    dragState = null;
+    event?.preventDefault?.();
+    setTimeout(schedule, 20);
+  }
+
+  document.addEventListener("pointerdown", (event) => {
+    const label = event.target.closest?.(".floor-full-name-label");
+    if (label) startDrag(event, label);
+  }, true);
+  document.addEventListener("pointermove", moveDrag, true);
+  document.addEventListener("pointerup", endDrag, true);
+  document.addEventListener("pointercancel", endDrag, true);
+
   const observer = new MutationObserver((mutations) => {
+    if (dragState) return;
     let relevant = false;
     for (const mutation of mutations) {
       const target = mutation.target;
@@ -287,7 +451,6 @@
 
   window.addEventListener("resize", schedule);
   document.addEventListener("click", () => setTimeout(schedule, 20), true);
-  document.addEventListener("pointerup", () => setTimeout(schedule, 20), true);
   document.addEventListener("change", () => setTimeout(schedule, 20), true);
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", schedule, { once: true });
